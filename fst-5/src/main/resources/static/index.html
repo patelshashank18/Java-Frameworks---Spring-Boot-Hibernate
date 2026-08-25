@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>Customer Management</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+        href="style.css">
+
 </head>
 
 <body>
@@ -15,92 +21,163 @@
 
         <h1>Customer Management System</h1>
 
+
         <!-- Customer Form -->
+
         <div class="form-container">
 
-            <h2>Add Customer</h2>
+            <h2 id="formTitle">Add Customer</h2>
 
             <form id="customerForm">
 
                 <div class="row">
 
                     <div class="input-group">
+
                         <label>First Name</label>
-                        <input type="text" id="firstName" required>
+
+                        <input type="text"
+                            id="firstName"
+                            required>
+
                     </div>
 
+
                     <div class="input-group">
+
                         <label>Last Name</label>
-                        <input type="text" id="lastName" required>
+
+                        <input type="text"
+                            id="lastName"
+                            required>
+
                     </div>
 
                 </div>
 
+
                 <div class="row">
 
                     <div class="input-group">
+
                         <label>Date of Birth</label>
-                        <input type="date" id="dateOfBirth" required>
+
+                        <input type="date"
+                            id="dateOfBirth"
+                            required>
+
                     </div>
 
+
                     <div class="input-group">
+
                         <label>Mobile</label>
-                        <input type="text" id="mobile" required>
+
+                        <input type="text"
+                            id="mobile"
+                            required>
+
                     </div>
 
                 </div>
 
+
                 <div class="row">
 
                     <div class="input-group">
+
                         <label>Address 1</label>
-                        <input type="text" id="address1" required>
+
+                        <input type="text"
+                            id="address1"
+                            required>
+
                     </div>
 
+
                     <div class="input-group">
+
                         <label>Address 2</label>
-                        <input type="text" id="address2">
+
+                        <input type="text"
+                            id="address2">
+
                     </div>
 
                 </div>
 
+
                 <div class="row">
 
                     <div class="input-group">
+
                         <label>Age</label>
-                        <input type="number" id="age" required>
+
+                        <input type="number"
+                            id="age"
+                            required>
+
                     </div>
 
+
                     <div class="input-group">
+
                         <label>Gender</label>
 
-                        <select id="gender" required>
-                            <option value="">Select Gender</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="Other">Other</option>
+                        <select id="gender"
+                            required>
+
+                            <option value="">
+                                Select Gender
+                            </option>
+
+                            <option value="Male">
+                                Male
+                            </option>
+
+                            <option value="Female">
+                                Female
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
                         </select>
 
                     </div>
 
                 </div>
 
+
                 <div class="input-group full-width">
 
                     <label>Email</label>
 
-                    <input type="email" id="email" required>
+                    <input type="email"
+                        id="email"
+                        required>
 
                 </div>
 
+
                 <div class="buttons">
 
-                    <button type="submit" class="add-btn">
+                    <button type="submit"
+                        class="add-btn"
+                        id="submitButton">
+
                         Add Customer
+
                     </button>
 
-                    <button type="button" class="clear-btn" onclick="clearForm()">
+
+                    <button type="button"
+                        class="clear-btn"
+                        onclick="clearForm()">
+
                         Clear
+
                     </button>
 
                 </div>
@@ -116,29 +193,47 @@
 
             <h2>Customer List</h2>
 
-            <button class="refresh-btn" onclick="loadCustomers()">
+
+            <button class="refresh-btn"
+                onclick="loadCustomers()">
+
                 Refresh Customers
+
             </button>
+
 
             <table>
 
                 <thead>
 
                     <tr>
+
                         <th>ID</th>
+
                         <th>First Name</th>
+
                         <th>Last Name</th>
+
                         <th>Date of Birth</th>
+
                         <th>Mobile</th>
+
                         <th>Address 1</th>
+
                         <th>Address 2</th>
+
                         <th>Age</th>
+
                         <th>Gender</th>
+
                         <th>Email</th>
+
                         <th>Action</th>
+
                     </tr>
 
                 </thead>
+
 
                 <tbody id="customerTableBody">
 
@@ -153,11 +248,23 @@
 
     <script>
 
-        const API_URL = "http://localhost:8080/customers";
+        const API_URL =
+            "http://localhost:8080/customers";
 
 
-        // GET customers
+        /*
+         * Stores the ID of the customer
+         * currently being edited.
+         *
+         * null means we are adding a new customer.
+         */
 
+        let editingCustomerId = null;
+
+
+        /**
+         * GET all customers.
+         */
         function loadCustomers() {
 
             fetch(API_URL)
@@ -167,13 +274,18 @@
                 .then(customers => {
 
                     const tableBody =
-                        document.getElementById("customerTableBody");
+                        document.getElementById(
+                            "customerTableBody"
+                        );
 
                     tableBody.innerHTML = "";
 
+
                     customers.forEach(customer => {
 
-                        const row = document.createElement("tr");
+                        const row =
+                            document.createElement("tr");
+
 
                         row.innerHTML = `
 
@@ -200,14 +312,26 @@
                             <td>
 
                                 <button
+                                    class="edit-btn"
+                                    onclick="editCustomer(${customer.id})">
+
+                                    Update
+
+                                </button>
+
+
+                                <button
                                     class="delete-btn"
                                     onclick="deleteCustomer(${customer.id})">
+
                                     Delete
+
                                 </button>
 
                             </td>
 
                         `;
+
 
                         tableBody.appendChild(row);
 
@@ -226,63 +350,122 @@
         }
 
 
-        // POST customer
-
+        /**
+         * CREATE or UPDATE customer.
+         */
         document
             .getElementById("customerForm")
-            .addEventListener("submit", function(event) {
+            .addEventListener(
+                "submit",
+                function(event) {
 
-                event.preventDefault();
-
-                const customer = {
-
-                    firstName:
-                        document.getElementById("firstName").value,
-
-                    lastName:
-                        document.getElementById("lastName").value,
-
-                    dateOfBirth:
-                        document.getElementById("dateOfBirth").value,
-
-                    mobile:
-                        document.getElementById("mobile").value,
-
-                    address1:
-                        document.getElementById("address1").value,
-
-                    address2:
-                        document.getElementById("address2").value,
-
-                    age:
-                        parseInt(document.getElementById("age").value),
-
-                    gender:
-                        document.getElementById("gender").value,
-
-                    email:
-                        document.getElementById("email").value
-
-                };
+                    event.preventDefault();
 
 
-                fetch(API_URL, {
+                    const customer = {
 
-                    method: "POST",
+                        firstName:
+                            document.getElementById(
+                                "firstName"
+                            ).value,
 
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
+                        lastName:
+                            document.getElementById(
+                                "lastName"
+                            ).value,
 
-                    body: JSON.stringify(customer)
+                        dateOfBirth:
+                            document.getElementById(
+                                "dateOfBirth"
+                            ).value,
 
-                })
+                        mobile:
+                            document.getElementById(
+                                "mobile"
+                            ).value,
+
+                        address1:
+                            document.getElementById(
+                                "address1"
+                            ).value,
+
+                        address2:
+                            document.getElementById(
+                                "address2"
+                            ).value,
+
+                        age:
+                            parseInt(
+                                document.getElementById(
+                                    "age"
+                                ).value
+                            ),
+
+                        gender:
+                            document.getElementById(
+                                "gender"
+                            ).value,
+
+                        email:
+                            document.getElementById(
+                                "email"
+                            ).value
+
+                    };
+
+
+                    /*
+                     * If editingCustomerId is null,
+                     * create a new customer.
+                     *
+                     * Otherwise update existing customer.
+                     */
+
+                    if (editingCustomerId === null) {
+
+                        createCustomer(customer);
+
+                    } else {
+
+                        updateCustomer(
+                            editingCustomerId,
+                            customer
+                        );
+
+                    }
+
+                }
+            );
+
+
+        /**
+         * POST customer.
+         */
+        function createCustomer(customer) {
+
+            fetch(API_URL, {
+
+                method: "POST",
+
+                headers: {
+
+                    "Content-Type":
+                        "application/json"
+
+                },
+
+                body:
+                    JSON.stringify(customer)
+
+            })
 
                 .then(response => response.json())
 
                 .then(data => {
 
-                    alert("Customer added successfully!");
+                    alert(
+                        "Customer added successfully!"
+                    );
 
                     clearForm();
 
@@ -294,20 +477,231 @@
 
                     console.error("Error:", error);
 
-                    alert("Error adding customer");
+                    alert(
+                        "Error adding customer"
+                    );
 
                 });
 
-            });
+        }
 
 
-        // DELETE customer
+        /**
+         * Load customer details into the form
+         * for updating.
+         */
+        function editCustomer(id) {
 
+            fetch(`${API_URL}/${id}`)
+
+                .then(response => {
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            "Customer not found"
+                        );
+
+                    }
+
+                    return response.json();
+
+                })
+
+                .then(customer => {
+
+                    /*
+                     * Store customer ID.
+                     */
+                    editingCustomerId =
+                        customer.id;
+
+
+                    /*
+                     * Change form title.
+                     */
+                    document.getElementById(
+                        "formTitle"
+                    ).innerText =
+                        "Update Customer";
+
+
+                    /*
+                     * Change submit button text.
+                     */
+                    document.getElementById(
+                        "submitButton"
+                    ).innerText =
+                        "Update Customer";
+
+
+                    /*
+                     * Fill customer data
+                     * into the form.
+                     */
+
+                    document.getElementById(
+                        "firstName"
+                    ).value =
+                        customer.firstName;
+
+
+                    document.getElementById(
+                        "lastName"
+                    ).value =
+                        customer.lastName;
+
+
+                    document.getElementById(
+                        "dateOfBirth"
+                    ).value =
+                        customer.dateOfBirth;
+
+
+                    document.getElementById(
+                        "mobile"
+                    ).value =
+                        customer.mobile;
+
+
+                    document.getElementById(
+                        "address1"
+                    ).value =
+                        customer.address1;
+
+
+                    document.getElementById(
+                        "address2"
+                    ).value =
+                        customer.address2 || "";
+
+
+                    document.getElementById(
+                        "age"
+                    ).value =
+                        customer.age;
+
+
+                    document.getElementById(
+                        "gender"
+                    ).value =
+                        customer.gender;
+
+
+                    document.getElementById(
+                        "email"
+                    ).value =
+                        customer.email;
+
+
+                    /*
+                     * Scroll to the form.
+                     */
+                    window.scrollTo({
+
+                        top: 0,
+
+                        behavior: "smooth"
+
+                    });
+
+                })
+
+                .catch(error => {
+
+                    console.error(
+                        "Error:",
+                        error
+                    );
+
+                    alert(
+                        "Unable to load customer"
+                    );
+
+                });
+
+        }
+
+
+        /**
+         * PUT customer.
+         */
+        function updateCustomer(
+            id,
+            customer
+        ) {
+
+            fetch(`${API_URL}/${id}`, {
+
+                method: "PUT",
+
+                headers: {
+
+                    "Content-Type":
+                        "application/json"
+
+                },
+
+                body:
+                    JSON.stringify(customer)
+
+            })
+
+                .then(response => {
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            "Unable to update customer"
+                        );
+
+                    }
+
+                    return response.json();
+
+                })
+
+                .then(data => {
+
+                    alert(
+                        "Customer updated successfully!"
+                    );
+
+                    clearForm();
+
+                    loadCustomers();
+
+                })
+
+                .catch(error => {
+
+                    console.error(
+                        "Error:",
+                        error
+                    );
+
+                    alert(
+                        "Error updating customer"
+                    );
+
+                });
+
+        }
+
+
+        /**
+         * DELETE customer.
+         */
         function deleteCustomer(id) {
 
-            if (!confirm("Are you sure you want to delete this customer?")) {
+            if (!confirm(
+                "Are you sure you want to delete this customer?"
+            )) {
+
                 return;
+
             }
+
 
             fetch(`${API_URL}/${id}`, {
 
@@ -315,46 +709,83 @@
 
             })
 
-            .then(response => {
+                .then(response => {
 
-                if (response.ok) {
+                    if (response.ok) {
 
-                    alert("Customer deleted successfully!");
+                        alert(
+                            "Customer deleted successfully!"
+                        );
 
-                    loadCustomers();
+                        loadCustomers();
 
-                } else {
+                    } else {
 
-                    alert("Unable to delete customer");
+                        alert(
+                            "Unable to delete customer"
+                        );
 
-                }
+                    }
 
-            })
+                })
 
-            .catch(error => {
+                .catch(error => {
 
-                console.error("Error:", error);
+                    console.error(
+                        "Error:",
+                        error
+                    );
 
-                alert("Error deleting customer");
+                    alert(
+                        "Error deleting customer"
+                    );
 
-            });
+                });
 
         }
 
 
-        // Clear form
-
+        /**
+         * Clear the customer form.
+         */
         function clearForm() {
 
             document
                 .getElementById("customerForm")
                 .reset();
 
+
+            /*
+             * Reset update mode.
+             */
+            editingCustomerId = null;
+
+
+            /*
+             * Change form title back
+             * to Add Customer.
+             */
+            document.getElementById(
+                "formTitle"
+            ).innerText =
+                "Add Customer";
+
+
+            /*
+             * Change button back
+             * to Add Customer.
+             */
+            document.getElementById(
+                "submitButton"
+            ).innerText =
+                "Add Customer";
+
         }
 
 
-        // Load customers when page opens
-
+        /**
+         * Load customers when page opens.
+         */
         loadCustomers();
 
     </script>
