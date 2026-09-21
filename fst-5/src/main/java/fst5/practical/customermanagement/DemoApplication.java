@@ -1,4 +1,4 @@
-package fst5.example.demo;
+package fst5.practical.customermanagement;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

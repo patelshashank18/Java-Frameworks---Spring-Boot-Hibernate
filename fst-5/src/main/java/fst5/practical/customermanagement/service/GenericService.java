@@ -1,4 +1,4 @@
-package fst5.example.demo.service;
+package fst5.practical.customermanagement.service;
 
 import java.util.List;
 

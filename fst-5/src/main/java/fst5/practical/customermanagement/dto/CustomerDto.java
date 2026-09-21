@@ -1,23 +1,19 @@
-package fst5.example.demo.dto;
+package fst5.practical.customermanagement.dto;
 
 import java.time.LocalDate;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Past;
-import jakarta.validation.constraints.PositiveOrZero;
-import jakarta.validation.constraints.Size;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.Size;
+
 import lombok.Getter;
 import lombok.Setter;
 
 /**
  * DTO used to receive and return customer data.
- *
- * <p>
- * Validation rules are defined in this class before
- * customer data is processed by the service layer.
- * </p>
  */
 @Getter
 @Setter
@@ -57,13 +53,13 @@ public class CustomerDto {
     private String mobile;
 
     /**
-     * First address of the customer.
+     * Primary address of the customer.
      */
     @NotBlank(message = "{customer.address1.required}")
     private String address1;
 
     /**
-     * Second address of the customer.
+     * Secondary address of the customer.
      */
     private String address2;
 

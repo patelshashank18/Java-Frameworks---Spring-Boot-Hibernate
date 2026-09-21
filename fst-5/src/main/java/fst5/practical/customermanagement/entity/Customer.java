@@ -1,12 +1,13 @@
-package fst5.example.demo.entity;
+package fst5.practical.customermanagement.entity;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -79,4 +80,5 @@ public class Customer {
      * Email address of the customer.
      */
     private String email;
+
 }

@@ -1,13 +1,14 @@
-package fst5.example.demo.service.impl;
+package fst5.practical.customermanagement.service.impl;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import fst5.example.demo.dto.CustomerDto;
-import fst5.example.demo.entity.Customer;
-import fst5.example.demo.repository.CustomerRepository;
-import fst5.example.demo.service.CustomerService;
+import fst5.practical.customermanagement.dto.CustomerDto;
+import fst5.practical.customermanagement.entity.Customer;
+import fst5.practical.customermanagement.repository.CustomerRepository;
+import fst5.practical.customermanagement.service.CustomerService;
 
 /**
  * Implementation of customer service operations.
@@ -57,7 +58,7 @@ public class CustomerServiceImpl implements CustomerService {
         return customerRepository.findAll()
                 .stream()
                 .map(this::convertToDto)
-                .toList();
+                .collect(Collectors.toList());
     }
 
     /**

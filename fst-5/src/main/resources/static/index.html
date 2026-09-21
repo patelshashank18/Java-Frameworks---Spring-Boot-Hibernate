@@ -5,13 +5,11 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Customer Management</title>
 
-    <link rel="stylesheet"
-        href="style.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -20,7 +18,6 @@
     <div class="container">
 
         <h1>Customer Management System</h1>
-
 
         <!-- Customer Form -->
 
@@ -36,25 +33,19 @@
 
                         <label>First Name</label>
 
-                        <input type="text"
-                            id="firstName"
-                            required>
+                        <input type="text" id="firstName" required>
 
                     </div>
-
 
                     <div class="input-group">
 
                         <label>Last Name</label>
 
-                        <input type="text"
-                            id="lastName"
-                            required>
+                        <input type="text" id="lastName" required>
 
                     </div>
 
                 </div>
-
 
                 <div class="row">
 
@@ -62,25 +53,19 @@
 
                         <label>Date of Birth</label>
 
-                        <input type="date"
-                            id="dateOfBirth"
-                            required>
+                        <input type="date" id="dateOfBirth" required>
 
                     </div>
-
 
                     <div class="input-group">
 
                         <label>Mobile</label>
 
-                        <input type="text"
-                            id="mobile"
-                            required>
+                        <input type="text" id="mobile" required>
 
                     </div>
 
                 </div>
-
 
                 <div class="row">
 
@@ -88,24 +73,19 @@
 
                         <label>Address 1</label>
 
-                        <input type="text"
-                            id="address1"
-                            required>
+                        <input type="text" id="address1" required>
 
                     </div>
-
 
                     <div class="input-group">
 
                         <label>Address 2</label>
 
-                        <input type="text"
-                            id="address2">
+                        <input type="text" id="address2">
 
                     </div>
 
                 </div>
-
 
                 <div class="row">
 
@@ -113,19 +93,15 @@
 
                         <label>Age</label>
 
-                        <input type="number"
-                            id="age"
-                            required>
+                        <input type="number" id="age" required>
 
                     </div>
-
 
                     <div class="input-group">
 
                         <label>Gender</label>
 
-                        <select id="gender"
-                            required>
+                        <select id="gender" required>
 
                             <option value="">
                                 Select Gender
@@ -149,32 +125,23 @@
 
                 </div>
 
-
                 <div class="input-group full-width">
 
                     <label>Email</label>
 
-                    <input type="email"
-                        id="email"
-                        required>
+                    <input type="email" id="email" required>
 
                 </div>
 
-
                 <div class="buttons">
 
-                    <button type="submit"
-                        class="add-btn"
-                        id="submitButton">
+                    <button type="submit" class="add-btn" id="submitButton">
 
                         Add Customer
 
                     </button>
 
-
-                    <button type="button"
-                        class="clear-btn"
-                        onclick="clearForm()">
+                    <button type="button" class="clear-btn" onclick="clearForm()">
 
                         Clear
 
@@ -186,21 +153,17 @@
 
         </div>
 
-
         <!-- Customer List -->
 
         <div class="table-container">
 
             <h2>Customer List</h2>
 
-
-            <button class="refresh-btn"
-                onclick="loadCustomers()">
+            <button class="refresh-btn" onclick="loadCustomers()">
 
                 Refresh Customers
 
             </button>
-
 
             <table>
 
@@ -234,7 +197,6 @@
 
                 </thead>
 
-
                 <tbody id="customerTableBody">
 
                 </tbody>
@@ -245,12 +207,10 @@
 
     </div>
 
-
     <script>
 
         const API_URL =
             "http://localhost:8080/customers";
-
 
         /*
          * Stores the ID of the customer
@@ -260,7 +220,6 @@
          */
 
         let editingCustomerId = null;
-
 
         /**
          * GET all customers.
@@ -280,12 +239,10 @@
 
                     tableBody.innerHTML = "";
 
-
                     customers.forEach(customer => {
 
                         const row =
                             document.createElement("tr");
-
 
                         row.innerHTML = `
 
@@ -319,7 +276,6 @@
 
                                 </button>
 
-
                                 <button
                                     class="delete-btn"
                                     onclick="deleteCustomer(${customer.id})">
@@ -331,7 +287,6 @@
                             </td>
 
                         `;
-
 
                         tableBody.appendChild(row);
 
@@ -349,7 +304,6 @@
 
         }
 
-
         /**
          * CREATE or UPDATE customer.
          */
@@ -357,10 +311,9 @@
             .getElementById("customerForm")
             .addEventListener(
                 "submit",
-                function(event) {
+                function (event) {
 
                     event.preventDefault();
-
 
                     const customer = {
 
@@ -413,7 +366,6 @@
 
                     };
 
-
                     /*
                      * If editingCustomerId is null,
                      * create a new customer.
@@ -436,7 +388,6 @@
 
                 }
             );
-
 
         /**
          * POST customer.
@@ -485,7 +436,6 @@
 
         }
 
-
         /**
          * Load customer details into the form
          * for updating.
@@ -516,7 +466,6 @@
                     editingCustomerId =
                         customer.id;
 
-
                     /*
                      * Change form title.
                      */
@@ -525,7 +474,6 @@
                     ).innerText =
                         "Update Customer";
 
-
                     /*
                      * Change submit button text.
                      */
@@ -533,7 +481,6 @@
                         "submitButton"
                     ).innerText =
                         "Update Customer";
-
 
                     /*
                      * Fill customer data
@@ -545,54 +492,45 @@
                     ).value =
                         customer.firstName;
 
-
                     document.getElementById(
                         "lastName"
                     ).value =
                         customer.lastName;
-
 
                     document.getElementById(
                         "dateOfBirth"
                     ).value =
                         customer.dateOfBirth;
 
-
                     document.getElementById(
                         "mobile"
                     ).value =
                         customer.mobile;
-
 
                     document.getElementById(
                         "address1"
                     ).value =
                         customer.address1;
 
-
                     document.getElementById(
                         "address2"
                     ).value =
                         customer.address2 || "";
-
 
                     document.getElementById(
                         "age"
                     ).value =
                         customer.age;
 
-
                     document.getElementById(
                         "gender"
                     ).value =
                         customer.gender;
 
-
                     document.getElementById(
                         "email"
                     ).value =
                         customer.email;
-
 
                     /*
                      * Scroll to the form.
@@ -621,7 +559,6 @@
                 });
 
         }
-
 
         /**
          * PUT customer.
@@ -688,7 +625,6 @@
 
         }
 
-
         /**
          * DELETE customer.
          */
@@ -701,7 +637,6 @@
                 return;
 
             }
-
 
             fetch(`${API_URL}/${id}`, {
 
@@ -744,7 +679,6 @@
 
         }
 
-
         /**
          * Clear the customer form.
          */
@@ -754,12 +688,10 @@
                 .getElementById("customerForm")
                 .reset();
 
-
             /*
              * Reset update mode.
              */
             editingCustomerId = null;
-
 
             /*
              * Change form title back
@@ -769,7 +701,6 @@
                 "formTitle"
             ).innerText =
                 "Add Customer";
-
 
             /*
              * Change button back
@@ -781,7 +712,6 @@
                 "Add Customer";
 
         }
-
 
         /**
          * Load customers when page opens.

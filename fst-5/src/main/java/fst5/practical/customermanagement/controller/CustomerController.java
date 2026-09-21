@@ -1,6 +1,8 @@
-package fst5.example.demo.controller;
+package fst5.practical.customermanagement.controller;
 
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,9 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import jakarta.validation.Valid;
-import fst5.example.demo.dto.CustomerDto;
-import fst5.example.demo.service.CustomerService;
+import fst5.practical.customermanagement.dto.CustomerDto;
+import fst5.practical.customermanagement.service.CustomerService;
 
 /**
  * REST controller used to manage customer operations.

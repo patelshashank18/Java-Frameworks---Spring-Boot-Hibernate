@@ -26,7 +26,6 @@ h2 {
     color: #444;
 }
 
-
 /* Customer Form */
 
 .form-container {
@@ -73,7 +72,6 @@ select:focus {
     border-color: #007bff;
 }
 
-
 /* Buttons */
 
 .buttons {
@@ -89,7 +87,6 @@ button {
     margin-right: 8px;
 }
 
-
 /* Add Customer Button */
 
 .add-btn {
@@ -100,7 +97,6 @@ button {
 .add-btn:hover {
     background: #19cf40;
 }
-
 
 /* Clear Button */
 
@@ -113,7 +109,6 @@ button {
     background: #545b62;
 }
 
-
 /* Refresh Button */
 
 .refresh-btn {
@@ -125,7 +120,6 @@ button {
 .refresh-btn:hover {
     background: #0056b3;
 }
-
 
 /* Customer Table */
 
@@ -163,7 +157,6 @@ tr:hover {
     background: #e9ecef;
 }
 
-
 /* Update Button */
 
 .edit-btn {
@@ -175,7 +168,6 @@ tr:hover {
     background: #e0a800;
 }
 
-
 /* Delete Button */
 
 .delete-btn {
@@ -186,7 +178,6 @@ tr:hover {
 .delete-btn:hover {
     background: #c82333;
 }
-
 
 /* Mobile Responsive */
 

@@ -9,19 +9,19 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.1.0</version>
+        <version>2.7.18</version>
         <relativePath/>
     </parent>
 
-    <groupId>fst5.example</groupId>
-    <artifactId>demo</artifactId>
+    <groupId>fst5.practical</groupId>
+    <artifactId>customermanagement</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <name>customer-management</name>
     <description>Customer Management System</description>
 
     <properties>
-        <java.version>25</java.version>
+        <java.version>11</java.version>
     </properties>
 
     <dependencies>
@@ -52,11 +52,14 @@
         </dependency>
 
         <!-- Lombok -->
+      <!-- Lombok -->
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
+          <groupId>org.projectlombok</groupId>
+          <artifactId>lombok</artifactId>
+          <version>1.18.42</version>
+          <scope>provided</scope>
+    <optional>true</optional>
+</dependency>
 
         <!-- Testing -->
         <dependency>
@@ -70,9 +73,26 @@
     <build>
         <plugins>
 
+            <!-- Spring Boot Maven Plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <!-- Maven Compiler Plugin with Lombok Annotation Processor -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.42</version>
+
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
             </plugin>
 
         </plugins>
