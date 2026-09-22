@@ -32,7 +32,7 @@ This project demonstrates basic **CRUD operations** through REST APIs and provid
 
 ## Project Structure
 
- text
+
 fst-5/
 ├── src/
 │   ├── main/
@@ -65,6 +65,7 @@ fst-5/
 │   └── test/
 │       └── java/
 │
+
 ├── pom.xml
 ├── mvnw
 └── mvnw.cmd
